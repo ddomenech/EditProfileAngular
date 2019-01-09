@@ -16,7 +16,7 @@ export class AuthService {
     };
    }
 
-    login(username: string, password: string)  {
+  login(username: string, password: string)  {
       return this.http.post<any>(`${environment.apiUrl}api-token-auth/`, {username: username, password: password})
       .pipe(map(user => {
         if (user && user.token) {
@@ -25,11 +25,9 @@ export class AuthService {
         console.log(`${JSON.stringify(user)}`);
         return user;
      }));
-   }
+  }
 
-   public logout() {
+  public logout() {
     localStorage.removeItem('CurrentUser');
-   }
-
-
+  }
 }

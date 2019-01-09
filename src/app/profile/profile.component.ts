@@ -1,8 +1,10 @@
+import { AuthService } from './../auth-service.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { UserProfile } from '../_models';
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +22,9 @@ export class ProfileComponent implements OnInit {
   constructor(
     private profile: ProfileService,
     private formbuilder: FormBuilder,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private authservice: AuthService,
+    private router: Router
     ) {}
 
   ngOnInit() {
@@ -48,9 +52,9 @@ export class ProfileComponent implements OnInit {
   onFileChange(event) {
     const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
+    if ( event.target.files && event.target.files.length ) {
       const [file] = event.target.files;
-      this.file= event.target.files[0];
+      this.file = event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.profileForm.patchValue({
@@ -89,5 +93,10 @@ export class ProfileComponent implements OnInit {
       .pipe(first()).subscribe(data => {
         alert(data.data);
       });
+  }
+
+  logout() {
+    this.authservice.logout();
+    this.router.navigate(['/']);
   }
 }

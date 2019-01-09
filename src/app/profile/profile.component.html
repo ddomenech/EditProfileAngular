@@ -1,5 +1,11 @@
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
 <ng-container>
-  <mat-toolbar color="primary">PERFIL DE USAURIO</mat-toolbar>
+  <mat-toolbar color="primary"> 
+  <button mat-icon-button [matMenuTriggerFor]="appMenu"><mat-icon>more_vert</mat-icon></button>
+          PERFIL DE USUARIO 
+  </mat-toolbar>
   <mat-card>
     <mat-card-title>Perfil de usuario de {{userProfile.username}}</mat-card-title>
     <img mat-card-image [src]="userProfile.avatar" class="img-profile">

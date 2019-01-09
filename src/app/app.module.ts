@@ -8,7 +8,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { UploadProfileComponent } from './upload-profile/upload-profile.component';
 import { LoginComponent } from './login/login.component';
 import { routing } from './app.routing';
 import { ProfileComponent } from './profile/profile.component';
@@ -18,7 +17,6 @@ import { ErrorInterceptor } from './err.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    UploadProfileComponent,
     LoginComponent,
     ProfileComponent
   ],
