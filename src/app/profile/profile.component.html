@@ -1,0 +1,58 @@
+<ng-container>
+  <mat-toolbar color="primary">PERFIL DE USAURIO</mat-toolbar>
+  <mat-card>
+    <mat-card-title>Perfil de usuario de {{userProfile.username}}</mat-card-title>
+    <img mat-card-image [src]="userProfile.avatar" class="img-profile">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+      <mat-card-content class="profile-content">
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="email" formControlName="email" name="email" type="email" >
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="name" formControlName="name" type="text" name="name" >
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="first_name" formControlName="first_name" type="text" name="first_name" >
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="lst_name" formControlName="last_name" type="text" name="last_name" >
+          </mat-form-field>
+        </mat-grid-tile>            
+       </mat-grid-list>
+       <mat-divider></mat-divider>
+        <input type="file" name="file" formControlName="file" (change)="onFileChange($event)">
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Update</button>
+      </mat-card-actions>
+      <mat-progress-bar *ngIf="submited" mode="buffer"></mat-progress-bar>
+    </form>
+  </mat-card>
+  <mat-toolbar color="warm">actualizar contraseña</mat-toolbar>
+  <form [formGroup]="passwordForm" (ngSubmit)="changePassword()" class="profile-form">
+    <table cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Old Password" formControlName="oldpassword" type="password" name="oldpassword" required>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td><mat-form-field >
+          <input matInput placeholder="New Password" formControlName="newpassword" type="password" name="newpassword" required>
+        </mat-form-field></td>
+      </tr>
+    </table>
+    <button mat-raised-button color="primary">Update</button>
+  </form>
+  <mat-toolbar>app para poder editar el perfil de usuario</mat-toolbar>
+</ng-container>
